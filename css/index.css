@@ -6,57 +6,8 @@ body {
 
 /* HEADER */
 
-.header-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 8%;
-}
-
-.img-logo {
-  max-width: 100%;
-  height: auto;
-}
-
-.main-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-
-.main-nav ul {
-  margin: 1em 0 0.5em;
-  text-align: center;
-}
-
-.main-nav li {
-  display: inline;
-}
-
-.main-nav a {
-  display: inline-block;
-  padding: 0.5em 1.5em;
-  text-decoration: none;
-  color: black;
-}
-
-@media (min-width: 960px) {
-  .main-header .container-header {
-    justify-content: space-between;
-  }
-}
-
 /* MAIN */
 
-.search {
-  display: flex;
-
-  background-color: dodgerblue;
-  height: 300px;
-}
-
-.search>.form {}
 
 /* .container {
   display: flex;
