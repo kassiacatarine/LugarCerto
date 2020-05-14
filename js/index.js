@@ -12,22 +12,15 @@ xmlhttp.send();
 
 function housesCarousel(arr) {
   let out = "";
-  for (let i = 0; i < arr.length - 21; i++) {
-    out += `<div class="card" style="width: 15rem;">
-              <img src="${arr[i].photo}" alt="${arr[i].name}" class="card-img-top img-card-offers">
+  for (let i = 0; i < arr.length; i++) {
+    out += `<div class="card">
+              <img src="${arr[i].photo}" alt="${arr[i].name}" class="card-img">
               <div class="card-header">
-                <h5>${arr[i].name}</h5>
-                <p>${arr[i].property_type}</p>
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">R$ ${arr[i].price}</h5>
-                <p class="card-text"></p>
-                <p class="card-text"></p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
+                <div class="property-type">${arr[i].property_type}</div>
+                <div class="name">${arr[i].name}</div>
+                <div class="card-title"><strong>R$ ${arr[i].price}</strong>/noite</div>
               </div>
             </div>`;
   }
-  document.getElementById("ofertas").innerHTML = out;
+  document.getElementById('cards-container').innerHTML = out;
 }
