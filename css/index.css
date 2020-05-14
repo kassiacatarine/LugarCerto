@@ -49,7 +49,70 @@ body {
 main {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
   width: 100%;
+}
+
+.search-container {
+  display: flex;
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 1px 2px;
+  height: 48px;
+  max-width: 95%;
+  width: 500px;
+  min-width: 260px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(34, 34, 34);
+  border-width: 1px;
+  border-style: solid;
+  border-image: initial;
+  border-radius: 12px;
+  transition: box-shadow 0.2s ease 0s;
+  border-color: rgb(247, 247, 247);
+}
+
+.filter-input {
+  height: 80%;
+  border: none;
+  margin-top: 0.2rem;
+}
+
+.filter-input:focus {
+  outline-width: 0;
+}
+
+.filter-label {
+  font-size: 10px;
+  line-height: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding-bottom: 4px;
+}
+
+.filter-container {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.filter-container:hover {
+  border: 2px solid black;
+}
+
+.search-button {
+  border: none;
+  color: white;
+  background: linear-gradient(90deg,
+      rgb(32, 224, 118) 0%,
+      rgb(30, 194, 235) 100%);
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 0.8rem;
 }
 
 #cards-container {
