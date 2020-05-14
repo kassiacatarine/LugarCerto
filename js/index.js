@@ -1,4 +1,4 @@
-const xmlhttp = new XMLHttpRequest();
+let xmlhttp = new XMLHttpRequest();
 const url = 'https://api.sheety.co/30b6e400-9023-4a15-8e6c-16aa4e3b1e72';
 
 xmlhttp.onreadystatechange = function () {
@@ -7,7 +7,7 @@ xmlhttp.onreadystatechange = function () {
     housesCarousel(myArr);
   }
 };
-xmlhttp.open("GET", url, true);
+xmlhttp.open('GET', url, true);
 xmlhttp.send();
 
 function housesCarousel(arr) {
