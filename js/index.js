@@ -35,7 +35,7 @@ const paginate = (array, page_number) => {
   return array.slice((page_number - 1) * ITEMS_PER_PAGE, page_number * ITEMS_PER_PAGE);
 }
 
-const renderPaginationMenu = () => {
+const renderPaginationMenu = (placesArraySize) => {
   const pagination = document.getElementById('pagination');
   pagination.innerHTML = '';
   if (currentPage !== 1)
@@ -43,9 +43,9 @@ const renderPaginationMenu = () => {
 
   pagination.appendChild(getPaginationCurrent());
 
-  if (currentPage * ITEMS_PER_PAGE < this.places.length)
+  if (currentPage * ITEMS_PER_PAGE < placesArraySize)
     pagination.appendChild(getPaginationNext());
-  renderPaginationInfo();
+  renderPaginationInfo(placesArraySize);
 }
 
 const getPaginationCurrent = () => {
@@ -92,10 +92,10 @@ const getPaginationNext = () => {
   return next;
 }
 
-const renderPaginationInfo = () => {
+const renderPaginationInfo = (placesArraySize) => {
   const paginationInfo = document.getElementById('pagination-info');
   const pageTotal = currentPage * ITEMS_PER_PAGE;
-  paginationInfo.innerHTML = `${pageTotal - ITEMS_PER_PAGE + 1} – ${pageTotal <= this.places.length ? pageTotal : this.places.length} de mais de ${this.places.length} acomodações`
+  paginationInfo.innerHTML = `${pageTotal - ITEMS_PER_PAGE + 1} – ${pageTotal <= placesArraySize ? pageTotal : placesArraySize} de mais de ${placesArraySize} acomodações`
 }
 
 const changePage = (pageToChange) => {
@@ -103,8 +103,24 @@ const changePage = (pageToChange) => {
   renderPage(this.places);
 }
 
-const filterPlaces = (text, places) => {
-  return places.filter(place => place.name.toLowerCase().includes(text.toLowerCase()));
+const filterPlaces = (places) => {
+  const text = document.getElementById('filter').value;
+  return places.filter(place =>
+    place.name.toLowerCase().indexOf(text.toLowerCase()) !== -1 ||
+    place.property_type.toLowerCase().indexOf(text.toLowerCase()) !== -1);
+}
+
+const setEventFilter = () => {
+  const searchButton = document.getElementById('search-button');
+  searchButton.addEventListener('click', () => {
+    renderPage(this.places);
+  });
+  const inputFilter = document.getElementById('filter');
+  inputFilter.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      renderPage(this.places);
+    }
+  });
 }
 
 function initMap() {
@@ -143,9 +159,11 @@ function initMap() {
 
 const renderPage = (places) => {
   this.places = places;
-  const paginetedData = paginate(places, currentPage);
+  const placesFiltered = filterPlaces(places);
+  const paginetedData = paginate(placesFiltered, currentPage);
   placesCarousel(paginetedData);
-  renderPaginationMenu();
+  renderPaginationMenu(placesFiltered.length);
 }
 
 getPlaces();
+setEventFilter();
