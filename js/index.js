@@ -113,11 +113,13 @@ const filterPlaces = (places) => {
 const setEventFilter = () => {
   const searchButton = document.getElementById('search-button');
   searchButton.addEventListener('click', () => {
+    currentPage = 1;
     renderPage(this.places);
   });
   const inputFilter = document.getElementById('filter');
   inputFilter.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
+      currentPage = 1;
       renderPage(this.places);
     }
   });
