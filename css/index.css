@@ -94,7 +94,7 @@ main {
 .filter-container {
   display: flex;
   flex-direction: column;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: transparent 0px 0px 0px 1px, transparent 0px 0px 0px 4px, rgba(0, 0, 0, 0.18) 0px 2px 4px;
   cursor: pointer;
   border-radius: 10px;
   padding: 0.5rem;
@@ -244,6 +244,12 @@ main {
 }
 
 /* FOOTER */
+#map {
+  height: 400px;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
 .rights-reserved {
   display: flex;
   padding-top: 24px;

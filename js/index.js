@@ -107,6 +107,40 @@ const filterPlaces = (text, places) => {
   return places.filter(place => place.name.toLowerCase().includes(text.toLowerCase()));
 }
 
+function initMap() {
+  const locations = [
+    ['Brasília, DF', -15.7215857, -48.0073976, 1],
+    ['St. Hab. Vicente Pires', -15.8039749, -48.0393341, 2],
+    ['Taguatinga Norte', -15.8016346, -48.0674421, 3],
+    ['Samambaia Norte', -15.8859553, -48.1471659, 4],
+    ['Recanto das Emas', -15.9207827, -48.0615657, 5]
+  ];
+
+  const map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 10,
+    center: new google.maps.LatLng(-15.7215857, -48.0073976),
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  });
+
+  const infowindow = new google.maps.InfoWindow();
+
+  let marker, i;
+
+  for (i = 0; i < locations.length; i++) {
+    marker = new google.maps.Marker({
+      position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+      map: map
+    });
+
+    google.maps.event.addListener(marker, 'click', (function (marker, i) {
+      return function () {
+        infowindow.setContent(locations[i][0]);
+        infowindow.open(map, marker);
+      }
+    })(marker, i));
+  }
+}
+
 const renderPage = (places) => {
   this.places = places;
   const paginetedData = paginate(places, currentPage);
