@@ -30,6 +30,7 @@ body {
 .nav-link {
   font-size: 15px;
   padding: 0.2rem 0.8rem;
+  cursor: pointer;
 }
 
 .nav-link-register {
@@ -97,6 +98,7 @@ main {
   cursor: pointer;
   border-radius: 10px;
   padding: 0.5rem;
+  margin-right: 8px;
   width: 100%;
 }
 
@@ -130,6 +132,25 @@ main {
   min-width: 20%;
   margin: 1rem;
   cursor: pointer;
+  transition: transform 500ms;
+}
+
+.card:focus~.card,
+.card:hover~.card {
+  transform: translateX(10%);
+  transform: translateY(-10%);
+}
+
+#cards-container:focus-within .card,
+#cards-container:hover .card {
+  transform: translateX(-10%);
+  transform: translateY(10%);
+}
+
+#cards-container .card:focus,
+#cards-container .card:hover {
+  transform: scale(1);
+  z-index: 1;
 }
 
 .card-img {
@@ -167,67 +188,60 @@ main {
   line-height: 20px;
 }
 
-/* .card-body {
-  padding: 2px 12px;
+.pagination-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-around;
-  height: 30%;
-} */
+  justify-content: center;
+  align-items: center;
+}
 
-/* .container {
+#pagination {
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 4em;
 }
 
-.item {
-  position: relative;
-  display: block;
-  flex: 1 1 0px;
-  transition: transform 500ms;
-  text-decoration: none;
-  color: black;
-  border-radius: 2%;
+#pagination-info {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  height: 4rem;
 }
 
-.container:focus-within .item,
-.container:hover .item {
-  transform: translateX(-25%);
+.paginate-item {
+  margin-left: 8px;
+  margin-right: 8px;
 }
 
-.item:focus ~ .item,
-.item:hover ~ .item {
-  transform: translateX(25%);
+.paginate-active {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  width: 32px;
+  color: rgb(255, 255, 255);
+  border-radius: 50%;
+  background-color: rgb(34, 34, 34);
 }
 
-.container .item:focus,
-.container .item:hover {
-  transform: scale(1.5);
-  z-index: 1;
+.paginate-buttom {
+  display: inline-flex;
+  color: rgb(34, 34, 34);
+  background-color: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  background-clip: padding-box;
+  box-shadow: transparent 0px 0px 0px 1px, transparent 0px 0px 0px 4px, rgba(0, 0, 0, 0.18) 0px 2px 4px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border-width: 1px;
+  border-color: rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.2s ease 0s, -ms-transform 0.25s ease 0s, -webkit-transform 0.25s ease 0s, transform 0.25s ease 0s;
 }
-
-body {
-overflow: hidden;
-}
-
-.item img {
-display: block;
-max-width: 100%;
-}
-
-.type {
-  color: gray;
-  font-size: 12px;
-  margin: 0;
-}
-
-.name {
-  margin: 0;
-}
-
-.price {
-  margin: 0;
-} */
 
 /* FOOTER */
 .rights-reserved {
